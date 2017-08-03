@@ -1,0 +1,12 @@
+<head>
+  <script src='https://cdn.plot.ly/plotly-1.14.1.min.js'></script>
+</head>
+<body>
+  <div id='chart' style='width: 100%; height: 100%;'></div>
+  <div style="white-space: pre-wrap; font-family: 'Courier New', Courier, monospace">
+  </div>
+  <script>
+    chart = document.getElementById('chart');
+    Plotly.plot(chart, <%= data %>, { margin: { t: 0 } });
+  </script>
+</body>

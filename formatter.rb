@@ -3,9 +3,6 @@ require_relative 'history_table'
 require 'date'
 
 class Formatter
-  START_DATE = Date.parse('01.05.1995')
-  END_DATE = Date.parse('01.06.2017')
-
   def initialize
     @history_table = HistoryTable.new
   end
@@ -30,20 +27,33 @@ class Formatter
   def to_array
     all_months.map do |date|
       salary_in_rubles = @history_table.value(date)
-      salary_in_dollars = Converter.new(date).to_dollars(salary_in_rubles)
+      salary_in_dollars =
+        begin
+          Converter.new(date).to_dollars(salary_in_rubles)
+        rescue StandardError
+          0
+        end
       [date, salary_in_dollars]
     end
   end
 
   private
 
+  def start_date
+    Date.parse('01.05.1995')
+  end
+
+  def end_date
+    Date.new(Date.today.year, Date.today.month, 1)
+  end
+
   def all_months
     result = []
-    date = START_DATE
+    date = start_date
     loop do
       result << date
       date = date >> 1
-      break if date > END_DATE
+      break if date > end_date
     end
     result
   end

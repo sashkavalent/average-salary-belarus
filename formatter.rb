@@ -15,9 +15,9 @@ class Formatter
     rows = to_array
     chart_data = [{ x: rows.map(&:first), y: rows.map(&:last), name: 'Salary' }]
     layout = {
-      title: 'Average salary',
-      xaxis: { title: 'Date' },
-      yaxis: { title: 'Amount, $' }
+      title: 'Средняя зарплата в Беларуси',
+      xaxis: { title: 'Дата' },
+      yaxis: { title: 'Размер з/п, $' }
     }
 
     html = File.read('chart_template.html')

@@ -15,7 +15,7 @@ class Formatter
     rows = to_array
     chart_data = [{ x: rows.map(&:first), y: rows.map(&:last), name: 'Salary' }]
     layout = {
-      title: 'Average salary',
+      title: 'Average salary in Belarus',
       xaxis: { title: 'Date' },
       yaxis: { title: 'Amount, $' }
     }

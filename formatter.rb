@@ -33,8 +33,10 @@ class Formatter
         rescue StandardError
           0
         end
+      next if salary_in_dollars.zero?
+
       [date, salary_in_dollars]
-    end
+    end.compact
   end
 
   private

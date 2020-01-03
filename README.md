@@ -1,8 +1,6 @@
 # Average Salary in Belarus
 
-It's rack application.
-
 ```bash
 rackup
-git push heroku master
+git push origin # deployed automatically to heroku https://average-salary-belarus.herokuapp.com/
 ```

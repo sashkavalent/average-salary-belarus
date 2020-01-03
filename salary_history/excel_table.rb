@@ -2,6 +2,8 @@ require_relative 'base_table'
 require 'creek'
 
 class SalaryHistory::ExcelTable < SalaryHistory::BaseTable
+  # Link is from https://www.belstat.gov.by/ofitsialnaya-statistika/realny-sector-ekonomiki/stoimost-rabochey-sily/operativnye-dannye/nominalnaya-nachislennaya-srednemesyachnaya-zarabotnaya-plata-rabotnikov-respubliki-belarus-po-kvart/vidam-ekonomicheskoy-deyatelnosti-po-kvartalam-2018-g/
+  # "Номинальная начисленная средняя заработная плата работников Республики Беларусь с 1991 по 2019 гг. (.xls)"
   URL = 'https://www.belstat.gov.by/upload-belstat/upload-belstat-excel/Oficial_statistika/2019/nach_sr_zarplata-91-19_1911.xlsx'.freeze
 
   def start_date

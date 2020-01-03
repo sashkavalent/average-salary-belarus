@@ -3,15 +3,12 @@ require 'net/http'
 require 'fileutils'
 
 class Converter
+  def self.start_date
+    Date.parse('01.04.1995')
+  end
+
   def initialize(date)
-    FileUtils.mkdir_p('rates')
-    file_name = "rates/#{format_date(date)}"
-    json = if File.exist?(file_name)
-             File.read(file_name)
-           else
-             puts "request to #{url(date)}"
-             Net::HTTP.get(URI(url(date))).tap { |rates| File.write(file_name, rates) }
-           end
+    json = CachedRequest.run(url(date), "rates/#{format_date(date)}")
     @rates = JSON.parse(json)
   end
 

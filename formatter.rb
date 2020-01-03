@@ -1,10 +1,12 @@
 require_relative 'converter'
-require_relative 'history_table'
+require_relative 'salary_history/excel_table'
+require_relative 'cached_request'
 require 'date'
+require 'erb'
 
 class Formatter
   def initialize
-    @history_table = HistoryTable.new
+    @history_table = SalaryHistory::ExcelTable.new
   end
 
   def to_string
@@ -20,8 +22,8 @@ class Formatter
       yaxis: { title: 'Amount, $' }
     }
 
-    html = File.read('chart_template.html')
-    html.gsub!('<%= data %>', [chart_data, layout].to_json[1..-2])
+    data = [chart_data, layout].to_json[1..-2]
+    ERB.new(File.read('chart_template.html.erb')).result_with_hash(data: data)
   end
 
   def to_array
@@ -42,7 +44,7 @@ class Formatter
   private
 
   def start_date
-    Date.parse('01.05.1995')
+    [@history_table.start_date, Converter.start_date].max
   end
 
   def end_date

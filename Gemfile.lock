@@ -5,7 +5,7 @@ GEM
       nokogiri (>= 1.10.0)
       rubyzip (>= 1.0.0)
     mini_portile2 (2.4.0)
-    nokogiri (1.10.7)
+    nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
     rack (2.0.8)
     rubyzip (2.0.0)
